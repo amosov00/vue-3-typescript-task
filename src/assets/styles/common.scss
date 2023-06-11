@@ -1,3 +1,119 @@
-h1 {
-  color: red;
+@import 'normalize';
+@import 'fonts';
+
+:root {
+  --background: #efefef;
+  --border: #d8d8d8;
+  --border-item: #dcdcdc;
+  --text: #2c2c2c;
+  --link: #1c91ed;
+  --orange: #f2a723;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  &.fixed {
+    overflow: hidden;
+  }
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  color: var(--text);
+  font-size: 1.4rem;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text);
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.btn {
+  outline: none;
+  border: none;
+  background: var(--background);
+  cursor: pointer;
+  border-radius: 1rem;
+  height: 4.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+  transition: 0.3s;
+  padding: 0.5rem 3rem;
+  &-primary {
+    background: var(--text);
+    &:hover {
+      background: var(--link);
+    }
+  }
+  &-secondary {
+    color: var(--link);
+    border: 1px solid #b7b7b7;
+    &:hover {
+      border-color: var(--text);
+    }
+  }
+}
+
+.page__wrapper {
+  background: var(--background);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+  outline: 1rem solid var(--border);
+  outline-offset: -3.4rem;
+  padding: 2.5rem 2.4rem;
+  @media (max-width: 740px) {
+    padding: 1rem;
+    outline: 0.5rem solid var(--border);
+    outline-offset: -1.5rem;
+  }
+}
+
+.content {
+  max-width: 125.8rem;
+  box-sizing: content-box;
+  width: 100%;
+  margin: 0 auto;
+  @media (max-width: 1400px) {
+    max-width: calc(100% - 12.4rem);
+  }
+  @media (max-width: 740px) {
+    max-width: calc(100% - 4.5rem);
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }

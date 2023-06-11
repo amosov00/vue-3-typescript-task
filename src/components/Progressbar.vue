@@ -1,33 +1,39 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
+const props = defineProps<{
+  percent: number
+}>()
+
+const progressWidth = computed(() => {
+  return `width:${String(props.percent)}%`
+})
 
 </script>
 
 <template>
-  <div class="logo">
-    <img v-lazy="{ src: 'src/assets/img/logo.png' }" alt="logo">
+  <div class="progressbar">
+    <div class="progressbar__line" :style="progressWidth" />
   </div>
-  <h2 class="aside__title">
-    How much fun<br>do you want in your life?
-  </h2>
-  <a href="mailto:harry.simon@yahoo.com">harry.simon@yahoo.com</a>
-
-  <Progressbar />
 </template>
 
 <style lang="scss" scoped>
-.logo {
+.progressbar {
+  background: var(--text);
+  border-radius: 1rem;
   width: 100%;
-  max-width: 14rem;
-  margin-bottom: 8rem;
-  img {
-    width: 100%;
+  height: 1.3rem;
+  position: relative;
+  overflow-x: hidden;
+  &__line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
     height: 100%;
-    object-fit: contain;
-  }
-}
-.aside {
-  &__title {
-    margin-bottom: 5.8rem;
+    transition: all 1s cubic-bezier(.10, .10, .25, .90) 0.3s;
+    background: var(--orange);
+    z-index: 1;
   }
 }
 </style>

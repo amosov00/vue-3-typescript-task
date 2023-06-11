@@ -1,25 +1,32 @@
-import { ref, computed, UnwrapRef, Ref, ComputedRef } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import subscribe from '@/data/subscribe.json'
-
-interface SubscriptionStore {
-  site: string,
-  subscribed: boolean
-}
+import subscribe from '@/data/subscribe.json' assert {type: 'json'}
+import { type SubscriptionStore } from '@/data/types'
 
 export const useSubscriptionStore = defineStore('subscriptions', () => {
-  const subscribes: Ref<UnwrapRef<SubscriptionStore[]>> = ref(...subscribe)
-  const oldFunMeter = ref(null)
+  const subscribes = ref<Array<SubscriptionStore>>([])
+  let oldFunMeter = ref(0)
 
-  const funMeter: ComputedRef<number> = computed(() => {
-    const active = subscribes.value.filter(item => item.subscribed)
-    return (active.length * 100) / subscribes.value.length
-  })
-
-  function changeSubscribes(site: string, activity: boolean) {
-    const index = subscribes.value.findIndex(item => item.site === site)
-    subscribes.value[index].subscribed = activity
+  function funMeter ():number {
+    const active = subscribes.value.filter((item) => item.subscribed)
+    console.log('store:' , active)
+    if (active.length) {
+      return Math.floor((active.length * 100) / subscribes.length)
+    }
+    return 0
   }
 
-  return { subscribes, oldFunMeter, funMeter, changeSubscribes }
+  function setOldFunMeter (val: number) {
+    oldFunMeter.value = val
+  }
+
+  function unsubscribeAll(): void {
+    subscribes.value?.map((item, index) => subscribes.value[index].subscribed = false)
+  }
+
+  function fetchSubscribes() {
+    subscribes.value = subscribe
+  }
+
+  return { subscribes, oldFunMeter, funMeter, fetchSubscribes, unsubscribeAll, setOldFunMeter }
 })
