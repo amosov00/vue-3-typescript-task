@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { type SubscriptionStore } from '@/data/types'
 import Checkbox from '@/components/Checkbox.vue'
-import { log } from 'console'
 
 const props = defineProps<{
   item: SubscriptionStore
 }>()
 
-const getImageUrl = (name) => {
+const getImageUrl = (name: string) => {
   return new URL(`../../src/assets/img/` + name, import.meta.url).href
 }
 </script>
