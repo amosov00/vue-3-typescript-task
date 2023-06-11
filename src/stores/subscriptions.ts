@@ -1,27 +1,28 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import subscribe from '@/data/subscribe.json' assert {type: 'json'}
+/* @ts-ignore */
+import subscribe from '@/data/subscribe.json' assert { type: 'json' }
 import { type SubscriptionStore } from '@/data/types'
 
 export const useSubscriptionStore = defineStore('subscriptions', () => {
   const subscribes = ref<Array<SubscriptionStore>>([])
-  let oldFunMeter = ref(0)
+  const oldFunMeter = ref(0)
 
-  function funMeter ():number {
-    const active = subscribes.value.filter((item) => item.subscribed)
-    console.log('store:' , active)
+  function funMeter(): number {
+    const active = subscribes.value?.filter((item) => item.subscribed)
+    console.log('store:', active)
     if (active.length) {
-      return Math.floor((active.length * 100) / subscribes.length)
+      return Math.floor((active.length * 100) / subscribes.value.length)
     }
     return 0
   }
 
-  function setOldFunMeter (val: number) {
+  function setOldFunMeter(val: number) {
     oldFunMeter.value = val
   }
 
   function unsubscribeAll(): void {
-    subscribes.value?.map((item, index) => subscribes.value[index].subscribed = false)
+    subscribes.value?.map((item, index) => (subscribes.value[index].subscribed = false))
   }
 
   function fetchSubscribes() {

@@ -8,5 +8,8 @@
       "path": "./tsconfig.app.json"
     }
   ],
-  "noImplicitAny": false
+  "noImplicitAny": false,
+  "compilerOptions": {
+    "plugins": [{"name": "typescript-tslint-plugin"}]
+  }
 }
