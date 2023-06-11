@@ -9,26 +9,23 @@ import { onMounted } from 'vue'
 import { type WindowSize } from '@/data/types'
 
 const subscriptionStore = useSubscriptionStore()
-const { funMeter, setOldFunMeter } = subscriptionStore
 
 const wWidth = inject('wSize') as WindowSize
 const showHeader = ref(false)
 
-function userScroll () {
+function userScroll() {
   showHeader.value = window.scrollY > 240
 }
 
 onMounted(() => {
-  setOldFunMeter(funMeter())
   if (wWidth.width < 740) {
     window.addEventListener('scroll', userScroll)
   }
-});
-
-onUnmounted (() => {
-  window.removeEventListener('scroll', userScroll);
 })
 
+onUnmounted(() => {
+  window.removeEventListener('scroll', userScroll)
+})
 </script>
 
 <template>
@@ -70,8 +67,6 @@ onUnmounted (() => {
       align-items: center;
     }
   }
-}
-.aside__footer {
 }
 </style>
 

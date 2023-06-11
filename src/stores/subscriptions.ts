@@ -10,7 +10,6 @@ export const useSubscriptionStore = defineStore('subscriptions', () => {
 
   function funMeter(): number {
     const active = subscribes.value?.filter((item) => item.subscribed)
-    console.log('store:', active)
     if (active.length) {
       return Math.floor((active.length * 100) / subscribes.value.length)
     }
@@ -27,6 +26,7 @@ export const useSubscriptionStore = defineStore('subscriptions', () => {
 
   function fetchSubscribes() {
     subscribes.value = subscribe
+    setOldFunMeter(funMeter())
   }
 
   return { subscribes, oldFunMeter, funMeter, fetchSubscribes, unsubscribeAll, setOldFunMeter }

@@ -11,7 +11,7 @@ const subscriptionStore = useSubscriptionStore()
 const { funMeter, setOldFunMeter } = subscriptionStore
 let { oldFunMeter } = storeToRefs(subscriptionStore)
 
-function calcPercent ()  {
+function calcPercent() {
   if (oldFunMeter.value > funMeter()) {
     percentClass.value = 'minus'
     return oldFunMeter.value - funMeter()
@@ -21,7 +21,7 @@ function calcPercent ()  {
   }
 }
 
-function closeModal () {
+function closeModal() {
   setOldFunMeter(funMeter())
   modal.hideModal()
 }
@@ -35,7 +35,8 @@ function closeModal () {
     </p>
     <div class="modal__content-percent">
       <span class="modal__content-number" :class="percentClass">
-        <span v-if="percentClass">-</span>{{ calcPercent() }}%
+        <span v-if="percentClass">-</span>
+        <span v-else>+</span>{{ calcPercent() }}%
       </span>
       <p v-if="!percentClass">more fun added</p>
       <p v-else>fun lost :(</p>
@@ -83,7 +84,7 @@ function closeModal () {
     text-align: center;
     font-size: 1.6rem;
     p {
-      margin: -0.5rem 0 0;
+      margin: 0;
       color: #aeaead;
       font-weight: 500;
     }
