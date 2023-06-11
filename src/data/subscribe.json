@@ -1,37 +1,37 @@
 [
   {
     "site": "trainyrbrain",
-    "img": "src/assets/img/train.png",
+    "img": "train.png",
     "subscribed": true,
     "text": "True/False Quiz. Keep your brain fit!"
   },
   {
     "site": "finditquiz",
-    "img": "src/assets/img/findit.png",
+    "img": "findit.png",
     "subscribed": false,
     "text": "Fun photo Quiz. Match words and names to <br>pictures of objects and people. "
   },
   {
     "site": "findsuperstar",
-    "img": "src/assets/img/star.png",
+    "img": "star.png",
     "subscribed": false,
     "text": "Celebrity Photo Quiz. Guess the star by <br>a photo! "
   },
   {
     "site": "ynquiz",
-    "img": "src/assets/img/quiz.png",
+    "img": "quiz.png",
     "subscribed": true,
     "text": "Easy Yes/No Quiz.<br>Distinguish facts from fiction!"
   },
   {
     "site": "moviequizonline",
-    "img": "src/assets/img/movie.png",
+    "img": "movie.png",
     "subscribed": true,
     "text": "Movie Photo Quiz.<br>Guess the film by a still! "
   },
   {
     "site": "whatcountry",
-    "img": "src/assets/img/country.png",
+    "img": "country.png",
     "subscribed": false,
     "text": "Geography quiz. Guess the country<br>by the photo (fact/description)"
   }
