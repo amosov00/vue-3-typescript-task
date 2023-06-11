@@ -9,7 +9,7 @@ import { onMounted } from 'vue'
 import { type WindowSize } from '@/data/types'
 
 const subscriptionStore = useSubscriptionStore()
-
+// test
 const wWidth = inject('wSize') as WindowSize
 const showHeader = ref(false)
 
