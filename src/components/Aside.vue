@@ -2,6 +2,7 @@
 import Progressbar from '@/components/Progressbar.vue'
 import AsideFooter from '@/components/AsideFooter.vue'
 import { useSubscriptionStore } from '@/stores/subscriptions'
+import logoIcon from '@/assets/img/logo.png'
 
 const subscriptionStore = useSubscriptionStore()
 
@@ -13,19 +14,17 @@ let { oldFunMeter } = subscriptionStore
   <div class="aside">
     <div class="aside__main">
       <div class="logo">
-        <img v-lazy="{ src: 'src/assets/img/logo.png' }" alt="logo">
+        <img v-lazy="{ src: logoIcon }" alt="logo" />
       </div>
       <div class="aside__title-block">
-        <h2 class="aside__title">
-          How much fun <br>do you want in your life?
-        </h2>
+        <h2 class="aside__title">How much fun <br />do you want in your life?</h2>
         <a class="email" href="mailto:harry.simon@yahoo.com">harry.simon@yahoo.com</a>
       </div>
 
       <div class="aside__progress">
         <p class="aside__progress-title">fun you get</p>
         <div class="aside__progress-block">
-          <Progressbar :percent="funMeter()"/>
+          <Progressbar :percent="funMeter()" />
           <p>
             <number
               ref="number1"

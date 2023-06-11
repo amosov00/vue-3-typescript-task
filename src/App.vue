@@ -2,7 +2,7 @@
 import MainPage from './views/MainPage.vue'
 import Modal from './components/Modal.vue'
 import { useWindowSize } from '@vueuse/core'
-import { ref, provide, onMounted} from 'vue'
+import { provide, onMounted } from 'vue'
 import { useSubscriptionStore } from '@/stores/subscriptions'
 
 const { width, height } = useWindowSize()
@@ -28,5 +28,5 @@ provide('wSize', wSize)
 </template>
 
 <style lang="scss">
-@import "./assets/styles/common.scss";
+@import './assets/styles/common.scss';
 </style>
