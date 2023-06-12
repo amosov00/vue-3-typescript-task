@@ -18,11 +18,13 @@ async function unsubscribe() {
   await unsubscribeAll()
   logSubscriptions()
   modal.showModal('success')
+  localStorage.setItem('subscribtionsList', JSON.stringify(subscribes.value))
 }
 
 async function saveSubscriptions() {
   await logSubscriptions()
   modal.showModal('success')
+  localStorage.setItem('subscribtionsList', JSON.stringify(subscribes.value))
 }
 </script>
 

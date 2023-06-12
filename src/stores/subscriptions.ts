@@ -25,7 +25,12 @@ export const useSubscriptionStore = defineStore('subscriptions', () => {
   }
 
   function fetchSubscribes() {
-    subscribes.value = subscribe
+    const localList = localStorage.getItem('subscribtionsList')
+    if (localList) {
+      subscribes.value = JSON.parse(localList)
+    } else {
+      subscribes.value = subscribe
+    }
     setOldFunMeter(funMeter())
   }
 

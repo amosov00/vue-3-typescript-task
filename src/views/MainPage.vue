@@ -18,9 +18,7 @@ function userScroll() {
 }
 
 onMounted(() => {
-  if (wWidth.width < 740) {
-    window.addEventListener('scroll', userScroll)
-  }
+  window.addEventListener('scroll', userScroll)
 })
 
 onUnmounted(() => {
@@ -39,7 +37,7 @@ onUnmounted(() => {
       </main>
       <AsideFooter v-if="wWidth.width < 740" />
       <Transition>
-        <MobileHeader v-if="showHeader && wWidth.width < 740" />
+        <MobileHeader v-if="showHeader" />
       </Transition>
     </div>
   </div>
