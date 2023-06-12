@@ -12,7 +12,6 @@ const props = defineProps<{
   <div class="subscribe__item" :class="{ active: item.subscribed }">
     <Checkbox v-model="item.subscribed" />
     <Image :imagePath="item.img" :imageSite="item.site" />
-    <!-- <img v-lazy="{ src: getImageUrl(item.img) }" :alt="item.site" /> -->
     <p v-html="item.text" />
   </div>
 </template>
