@@ -3,8 +3,6 @@ import SubscribeItem from '@/components/SubscribeItem.vue'
 import { useSubscriptionStore } from '@/stores/subscriptions'
 import { storeToRefs } from 'pinia'
 import { useModal } from '@/composables/modal'
-import { defineAsyncComponent } from 'vue'
-const SubscribeItemAsync = defineAsyncComponent(() => import('@/components/SubscribeItem.vue'))
 
 const subscriptionStore = useSubscriptionStore()
 
@@ -36,7 +34,7 @@ async function saveSubscriptions() {
     </div>
 
     <section v-if="subscribes" class="main__info-block">
-      <SubscribeItemAsync v-for="item in subscribes" :item="item" :key="item.site" />
+      <SubscribeItem v-for="item in subscribes" :item="item" :key="item.site" />
     </section>
 
     <div class="main__content-buttons">
