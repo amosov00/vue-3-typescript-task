@@ -3,6 +3,8 @@ import SubscribeItem from '@/components/SubscribeItem.vue'
 import { useSubscriptionStore } from '@/stores/subscriptions'
 import { storeToRefs } from 'pinia'
 import { useModal } from '@/composables/modal'
+import { defineAsyncComponent } from 'vue'
+const SubscribeItemAsync = defineAsyncComponent(() => import('@/components/SubscribeItem.vue'))
 
 const subscriptionStore = useSubscriptionStore()
 
@@ -10,21 +12,20 @@ const { subscribes } = storeToRefs(subscriptionStore)
 const { unsubscribeAll } = subscriptionStore
 const modal = useModal()
 
-function logSubscriptions () {
+function logSubscriptions() {
   console.log(JSON.parse(JSON.stringify(subscribes.value)))
 }
 
-async function unsubscribe () {
+async function unsubscribe() {
   await unsubscribeAll()
   logSubscriptions()
   modal.showModal('success')
 }
 
-async function saveSubscriptions () {
+async function saveSubscriptions() {
   await logSubscriptions()
   modal.showModal('success')
 }
-
 </script>
 
 <template>
@@ -35,7 +36,7 @@ async function saveSubscriptions () {
     </div>
 
     <section v-if="subscribes" class="main__info-block">
-      <SubscribeItem v-for="item in subscribes" :item="item" :key="item.site" />
+      <SubscribeItemAsync v-for="item in subscribes" :item="item" :key="item.site" />
     </section>
 
     <div class="main__content-buttons">

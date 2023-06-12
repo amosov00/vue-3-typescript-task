@@ -1,20 +1,18 @@
 <script setup lang="ts">
 import { type SubscriptionStore } from '@/data/types'
 import Checkbox from '@/components/Checkbox.vue'
+import Image from '@/components/Image.vue'
 
 const props = defineProps<{
   item: SubscriptionStore
 }>()
-
-const getImageUrl = (name: string) => {
-  return new URL(`../../src/assets/img/` + name, import.meta.url).href
-}
 </script>
 
 <template>
   <div class="subscribe__item" :class="{ active: item.subscribed }">
     <Checkbox v-model="item.subscribed" />
-    <img v-lazy="{ src: getImageUrl(item.img) }" :alt="item.site" />
+    <Image :imagePath="item.img" :imageSite="item.site" />
+    <!-- <img v-lazy="{ src: getImageUrl(item.img) }" :alt="item.site" /> -->
     <p v-html="item.text" />
   </div>
 </template>
